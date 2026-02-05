@@ -1,5 +1,5 @@
 # Do not add streamlit - Cloud provides it. Reduces dependency conflicts.
-spacy~=3.7.6
+spacy>=3.8.7,<4
 nltk~=3.8.1
 scikit-learn~=1.4.0
 python-docx==1.1.0
