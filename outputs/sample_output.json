@@ -1,0 +1,12 @@
+{
+  "contract_type": "NDA",
+  "risk_score": 62,
+  "clauses": [
+    {
+      "clause_id": "1",
+      "risk_level": "High",
+      "flags": ["Indemnity"],
+      "explanation": "..."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-02-05T10:20:30Z",
+  "event": "PDF_EXPORT",
+  "metadata": {
+    "document_hash": "abc123",
+    "user": "local"
+  }
+}
+{"timestamp": "2026-02-05T16:42:28.672686", "event": "DOCUMENT_UPLOADED", "metadata": {"document_hash": "f1f214c9f43b5a56516d1c32353bc78c1f2d80090588549f0efb85b2b5e6e0d1"}}
+{"timestamp": "2026-02-05T16:42:28.675687", "event": "ANALYSIS_COMPLETED", "metadata": {"document_hash": "f1f214c9f43b5a56516d1c32353bc78c1f2d80090588549f0efb85b2b5e6e0d1", "contract_type": "NDA", "clause_count": 0, "risk_score": 0}}
+{"timestamp": "2026-02-05T16:46:28.162672", "event": "DOCUMENT_UPLOADED", "metadata": {"document_hash": "f1f214c9f43b5a56516d1c32353bc78c1f2d80090588549f0efb85b2b5e6e0d1"}}
+{"timestamp": "2026-02-05T16:46:28.217982", "event": "ANALYSIS_COMPLETED", "metadata": {"document_hash": "f1f214c9f43b5a56516d1c32353bc78c1f2d80090588549f0efb85b2b5e6e0d1", "contract_type": "NDA", "clause_count": 5, "risk_score": 9}}
