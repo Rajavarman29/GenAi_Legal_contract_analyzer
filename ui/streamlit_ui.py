@@ -2,32 +2,30 @@ import streamlit as st
 import tempfile
 import os
 
-from core.file_loader import load_file
-from core.language_detector import detect_language
-from core.hindi_normalizer import normalize_hindi
-from core.clause_extractor import extract_clauses
-from core.contract_classifier import classify_contract
-from core.similarity_engine import match_clause
-
-from risk_engine.scorer import score_clause, contract_score
-from audit.logger import log_event
-from audit.knowledge_base import update_kb
-from utils.hash_utils import hash_document
-
-from llm.llm_client import call_llm
-from llm.prompts import (
-    CLAUSE_EXPLANATION_PROMPT,
-    RISK_EXPLANATION_PROMPT,
-    REWRITE_PROMPT,
-    SUMMARY_PROMPT
-)
-
 def run_app():
     st.title("GenAI Legal Contract Analyzer (SME Edition)")
 
     uploaded = st.file_uploader("Upload Contract", type=["pdf", "docx", "txt"])
 
     if uploaded:
+        from core.file_loader import load_file
+        from core.language_detector import detect_language
+        from core.hindi_normalizer import normalize_hindi
+        from core.clause_extractor import extract_clauses
+        from core.contract_classifier import classify_contract
+        from core.similarity_engine import match_clause
+        from risk_engine.scorer import score_clause, contract_score
+        from audit.logger import log_event
+        from audit.knowledge_base import update_kb
+        from utils.hash_utils import hash_document
+        from llm.llm_client import call_llm
+        from llm.prompts import (
+            CLAUSE_EXPLANATION_PROMPT,
+            RISK_EXPLANATION_PROMPT,
+            REWRITE_PROMPT,
+            SUMMARY_PROMPT
+        )
+
         suffix = os.path.splitext(uploaded.name)[1]
 
         with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
