@@ -1,22 +1,56 @@
 import spacy
 
-nlp = spacy.load("en_core_web_sm")
+def load_spacy_model():
+    """
+    Loads the spaCy English model.
+    If the model is not available (e.g., on Streamlit Cloud),
+    it downloads it at runtime and then loads it.
+    """
+    try:
+        return spacy.load("en_core_web_sm")
+    except OSError:
+        from spacy.cli import download
+        download("en_core_web_sm")
+        return spacy.load("en_core_web_sm")
+
+nlp = load_spacy_model()
 
 LIABILITY_TERMS = [
-    "liable", "liability", "damages", "losses", "indemnify"
+    "liable",
+    "liability",
+    "damages",
+    "losses",
+    "indemnify",
+    "indemnification"
 ]
 
 def extract_jurisdiction(text):
-    triggers = ["governed by", "jurisdiction", "courts of"]
+    """
+    Detect jurisdiction-related clauses using rule-based triggers.
+    """
+    triggers = [
+        "governed by",
+        "jurisdiction",
+        "courts of",
+        "subject to the laws of"
+    ]
+    text_lower = text.lower()
     for t in triggers:
-        if t in text.lower():
+        if t in text_lower:
             return text
     return None
 
 def extract_liabilities(text):
-    return [t for t in LIABILITY_TERMS if t in text.lower()]
+    """
+    Extract liability-related terms from the clause text.
+    """
+    text_lower = text.lower()
+    return [term for term in LIABILITY_TERMS if term in text_lower]
 
 def extract_entities(text):
+    """
+    Extract named entities and legal-relevant information from contract text.
+    """
     doc = nlp(text)
 
     entities = {
