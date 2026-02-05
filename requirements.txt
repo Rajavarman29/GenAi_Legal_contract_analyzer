@@ -1,5 +1,6 @@
 streamlit
 spacy
+en-core-web-sm==3.7.1
 nltk
 scikit-learn
 python-docx
